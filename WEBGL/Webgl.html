@@ -44,6 +44,11 @@
 			var block001_json = "{{ block001_json }}";
 			console.log(JSON.parse.block001_json);
 
+			console.log("BEGIN!");
+			var http = new XMLHttpRequest();
+			var paras = "text=stuff";
+			http.open("POST", "http://localhost:3000", true);
+
 
 			//Socket.IO connection 
         	/*var socket = io.connect('http://localhost:3000');
@@ -82,8 +87,13 @@
 				var a9 = createSpot(new THREE.Vector3(colA,elevation,290));
 
 				var gui = new dat.GUI();
-                var obj = {add:function(){changeColor(a1)}};
-				gui.add(obj, "add");
+                var obj = {Parked:function(){
+                	changeColor(a1);
+                	changeColor(a4);
+                	changeColor(a5);
+                	changeColor(a9);
+                }};
+				gui.add(obj, "Parked");
 
 				//
 				renderer = new THREE.WebGLRenderer();
@@ -120,7 +130,7 @@
 			}
 
 			function changeColor(mesh){
-				mesh.material.color.setHex( 0xffffff );
+				mesh.material.color.setHex( 0xFF0000 );
 			}
 
 			function onWindowResize() {
